@@ -32,3 +32,5 @@ gitlabci/.generated
 /bin
 dms-app-mgmtservice/bin/
 dms-app-mgmt.lnk
+
+/out
