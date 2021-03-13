@@ -3,8 +3,11 @@ package com.test.datetest;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Test {
 
@@ -12,14 +15,30 @@ public class Test {
 //        testDateUtil();
 
         Tsa tsa = null;
-        try {
+        /*try {
             tsa = Tsa.class.newInstance();
         } catch (InstantiationException e) {
 
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-        System.out.println(tsa.toString());
+        System.out.println(tsa.toString());*/
+
+        /*Integer i1 = null;
+        if(i1 > 1) {
+            System.out.println(i1);
+        }*/
+
+        /*BigDecimal b1 = BigDecimal.ZERO;
+        testBigDecimalAdd(b1);
+        System.out.println(b1);*/
+
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("2");
+        list.add("e");
+
+        System.out.println(String.join(",",list));
     }
 
 
@@ -65,5 +84,9 @@ public class Test {
                     ", dd='" + dd + '\'' +
                     '}';
         }
+    }
+
+    public static void testBigDecimalAdd(BigDecimal bigDecimal) {
+        bigDecimal = bigDecimal.add(new BigDecimal("21"));
     }
 }
