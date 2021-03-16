@@ -1,5 +1,9 @@
 package com.test.datastructure.linkedlisk;
 
+import cn.hutool.core.collection.CollectionUtil;
+
+import java.util.Stack;
+
 /**
  * @Description: 模拟有序列表
  * @Copyright: Copyright (c) 2021  ALL RIGHTS RESERVED.
@@ -30,6 +34,7 @@ public class SingleLinkedListDemo {
         singleLinkedList.add(hero2);
         singleLinkedList.add(hero3);
 
+        System.out.println("反转之前");
         singleLinkedList.list();
 
         singleLinkedList.clear();
@@ -42,6 +47,73 @@ public class SingleLinkedListDemo {
         singleLinkedList.addNodeByNo(hero3);
         singleLinkedList.addNodeByNo(hero3);
         singleLinkedList.list();
+
+        System.out.println("反转之后");
+        reverseList(singleLinkedList.getHead());
+        singleLinkedList.list();
+
+        System.out.println("逆向打印单链表，不改变原有结构");
+        reversetPrint(singleLinkedList.getHead());
+
+        HeroNode hero5 = new HeroNode(4, "乌龟", "憨八龟");
+        singleLinkedList.update(hero5);
+
+        System.out.println("修改后：");
+        singleLinkedList.list();
+
+        singleLinkedList.remove(hero5);
+        System.out.println("删除后：");
+        singleLinkedList.list();
+        singleLinkedList.addNodeByNo(hero5);
+        System.out.println("再插入后：");
+        singleLinkedList.list();
+
+    }
+
+    /**
+     * 利用栈，逆向打印单链表
+     * @param head
+     */
+    public static void reversetPrint(HeroNode head) {
+        if(null == head || null == head.getNext()) {
+            return;
+        }
+        //利用栈，逆向打印单链表
+        Stack<HeroNode> stack = new Stack<>();
+        HeroNode headNext = head.getNext();
+        while (headNext != null) {
+            //将数据压入栈中
+            stack.push(headNext);
+            headNext = headNext.getNext();
+        }
+        while (CollectionUtil.isNotEmpty(stack)) {
+            //将数据从栈中取出
+            System.out.println(stack.pop());
+        }
+    }
+
+    /**
+     * 反转单链表
+     * @param heroNode
+     * @return
+     */
+    public static void reverseList(HeroNode heroNode) {
+        if(heroNode == null || heroNode.getNext() == null) {
+            return;
+        }
+
+        HeroNode newNode = new HeroNode(0, "", "");
+        //表示当前节点
+        HeroNode next = heroNode.getNext();
+        //临时变量
+        HeroNode temp = null;
+        while (next != null) {
+            temp = next.getNext();
+            next.setNext(newNode.getNext());
+            newNode.setNext(next);
+            next = temp;
+        }
+        heroNode.setNext(newNode.getNext());
     }
 
 }
@@ -51,6 +123,10 @@ class SingleLinkedList {
      * 初始化头节点，此节点只作为头部，不为实际排名
      */
     private final HeroNode head = new HeroNode(0, "", "");
+
+    public HeroNode getHead() {
+        return head;
+    }
 
     /**
      * 无序添加英雄
@@ -109,6 +185,45 @@ class SingleLinkedList {
         //链表为空，不打印信息
         while (temp != null) {
             System.out.println(temp);
+            temp = temp.getNext();
+        }
+    }
+
+    /**
+     * 根据NO修改数据
+     * @param heroNode
+     */
+    public void update(HeroNode heroNode) {
+        if(heroNode == null || head.getNext() == null) {
+            System.out.println("链表或输入参数为空，无法修改");
+            return;
+        }
+        HeroNode temp = head;
+        while (temp.getNext() != null) {
+            if(temp.getNext().getNo() == heroNode.getNo()) {
+                heroNode.setNext(temp.getNext().getNext());
+                temp.setNext(heroNode);
+                break;
+            }
+            temp = temp.getNext();
+        }
+    }
+
+    /**
+     * 根据No删除节点
+     * @param heroNode
+     */
+    public void remove(HeroNode heroNode) {
+        if(heroNode == null || head.getNext() == null) {
+            System.out.println("链表或输入参数为空，无法修改");
+            return;
+        }
+        HeroNode temp = head;
+        while (temp.getNext() != null) {
+            if(temp.getNext().getNo() == heroNode.getNo()) {
+                temp.setNext(temp.getNext().getNext());
+                break;
+            }
             temp = temp.getNext();
         }
     }
