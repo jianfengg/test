@@ -11,10 +11,12 @@ public class ListTest {
 
     public static void main(String[] args) {
         List<Person> personList = testStream();
+        System.err.println(personList);
 
-        /*List<Person> collect = personList.stream().sorted(Comparator.comparing(Person::getUserCode).reversed().thenComparing(Person::getId)).collect(Collectors.toList());
+        List<Person> collect = personList.stream().sorted(Comparator.comparing(Person::getUserCode).reversed().thenComparing(Person::getId)).collect(Collectors.toList());
 
-        Map<String, Set<String>> listMap = personList.stream().collect(Collectors.groupingBy(Person::getSex, Collectors.mapping(Person :: getUserCode, Collectors.toSet())));
+        System.out.println(collect);
+        /*Map<String, Set<String>> listMap = personList.stream().collect(Collectors.groupingBy(Person::getSex, Collectors.mapping(Person :: getUserCode, Collectors.toSet())));
         System.err.println(collect);
 
         System.err.println(listMap);
@@ -26,10 +28,10 @@ public class ListTest {
         System.err.println(collect2);
 
         Set<String> collect3 = personList.stream().map(Person::getUserCode).collect(Collectors.toSet());
-        System.err.println(collect3);*/
+        System.err.println(collect3);
 
         Map<Integer, Person> personMap = personList.stream().collect(Collectors.toMap(Person::getId, person -> person));
-        System.err.println(personMap);
+        System.err.println(personMap);*/
     }
 
     public static void testCollectJoin() {
@@ -44,7 +46,7 @@ public class ListTest {
 
     public static List<Person> testStream() {
         List<Person> personList = new ArrayList<>();
-        Person person1 = new Person(1,null,"name1", CollectConstants.PersonConstants.SEX_MAN);
+        Person person1 = new Person(1,"p10","name1", CollectConstants.PersonConstants.SEX_MAN);
         Person person2 = new Person(2,"p8","name2", CollectConstants.PersonConstants.SEX_WOMAN);
         Person person3 = new Person(3,"p4","name3", CollectConstants.PersonConstants.SEX_MAN);
         Person person4 = new Person(4,"p2","name4", CollectConstants.PersonConstants.SEX_WOMAN);
