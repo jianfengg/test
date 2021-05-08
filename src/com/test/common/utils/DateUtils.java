@@ -1,6 +1,6 @@
 package com.test.common.utils;
 
-import java.util.Date;
+import java.util.*;
 
 /**
  * @Description: 时间工具类
@@ -14,6 +14,17 @@ import java.util.Date;
  * @menu
  */
 public class DateUtils {
+
+    public static void main(String[] args) {
+        /*List<String> s = new ArrayList<>();
+        Map<String, List<String>> map = new HashMap<>();
+        List<String> list = map.get(null);
+        System.out.println(list.add("1"));*/
+
+        System.out.println("SettlementStatus".toUpperCase());
+
+
+    }
 
     public static Long subDate(Date date1, Date date2) {
         long time1 = date1.getTime();

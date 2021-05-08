@@ -1,4 +1,4 @@
-package com.test.dto.collect;
+package com.test.dto.object;
 
 import com.test.dto.common.BasePerson;
 
@@ -13,7 +13,7 @@ import com.test.dto.common.BasePerson;
  * @Version: 1.0
  * @menu
  */
-public class Person extends BasePerson {
+public class Person {
     public Person(Integer id, String userCode, String userName, String sex) {
         this.id = id;
         this.userCode = userCode;
