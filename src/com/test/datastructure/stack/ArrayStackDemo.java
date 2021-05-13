@@ -17,8 +17,15 @@ public class ArrayStackDemo {
 
     public static void main(String[] args) {
         ArrayStack stack = new ArrayStack(4);
-        String key;
+        stack.push('a');
+
+        System.out.println(stack.pop());
+    }
+
+    public static void test() {
+        ArrayStack stack = new ArrayStack(4);
         Scanner scanner = new Scanner(System.in);
+        String key;
         //控制是否还进行循环
         boolean loop = true;
         while (loop) {
@@ -33,7 +40,7 @@ public class ArrayStackDemo {
                     stack.push(nextInt);
                     break;
                 case "o":
-                    stack.pop();
+                    System.out.println(stack.pop());;
                     break;
                 case "l":
                     stack.loopStack();
@@ -46,7 +53,6 @@ public class ArrayStackDemo {
                     break;
             }
         }
-
     }
 }
 
@@ -92,15 +98,16 @@ class ArrayStack {
     /**
      * 从栈中取数
      */
-    public void pop() {
+    public int pop() {
         //从栈中取数据，先进后出
         if(top == -1) {
             System.out.println("栈空，无数据");
-            return;
+            throw new RuntimeException("栈空，无数据");
         }
         int value = stack[top];
         top --;
-        System.out.println(value);
+//        System.out.println(value);
+        return value;
     }
 
     /**
@@ -115,5 +122,21 @@ class ArrayStack {
             System.out.println(stack[i]);
 
         }
+    }
+
+    /**
+     * 判断栈是否为空
+     * @return ture:空，false:不为空
+     */
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    /**
+     * 获取顶部元素
+     * @return 顶部元素
+     */
+    public int getTopData() {
+        return stack[top];
     }
 }
