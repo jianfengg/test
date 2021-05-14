@@ -25,6 +25,23 @@ import java.util.Stack;
 public abstract class CalculatorUtils {
 
     /**
+     * +
+     */
+    public static final char ADD = '+';
+    /**
+     * -
+     */
+    public static final char MINUS= '-';
+    /**
+     * *
+     */
+    public static final char TIMES = '*';
+    /**
+     * /
+     */
+    public static final char DIVISION = '/';
+
+    /**
      * 四则运算符
      */
     public static final List<Character> OPER = Arrays.asList('+','-','*','/');
@@ -33,15 +50,6 @@ public abstract class CalculatorUtils {
      * 括号
      */
     public static final List<Character> TOP_OPER = Arrays.asList('{','}','(',')');
-
-    /**
-     * 判断符号是否是运算符
-     * @param oper 符合
-     * @return true:运算符，false:不是运算符
-     */
-    public static boolean checkOper(char oper) {
-        return OPER.contains(oper);
-    }
 
     /**
      * 判断是否是运算符
@@ -55,6 +63,13 @@ public abstract class CalculatorUtils {
         return false;
     }
 
+    /**
+     * 计算
+     * @param b1 值1
+     * @param b2 值2
+     * @param oper 运算符
+     * @return b1 oper b2
+     */
     public static BigDecimal calculation(BigDecimal b1, BigDecimal b2, int oper) {
         b1 = BigDecimalUtils.getBigDecimal(b1);
         b2 = BigDecimalUtils.getBigDecimal(b2);
@@ -70,7 +85,7 @@ public abstract class CalculatorUtils {
                 result = b1.multiply(b2);
                 break;
             case '/':
-                result = b1.divide(b2).setScale(2, RoundingMode.HALF_UP);
+                result = b1.divide(b2, 2, RoundingMode.HALF_UP);
                 break;
             default:
                 throw new RuntimeException("输入的运算符不合法");
@@ -84,9 +99,9 @@ public abstract class CalculatorUtils {
      * @return 0:加减法 1:乘除法  2：括号
      */
     public static int operLevel(int oper1) {
-        if('+' == oper1 || '-' == oper1) {
+        if(ADD == oper1 || MINUS == oper1) {
             return 0;
-        } else if('*' == oper1 || '/' == oper1) {
+        } else if(TIMES == oper1 || DIVISION == oper1) {
             return 1;
         } else if(TOP_OPER.contains((char)oper1)) {
             return 2;
@@ -105,15 +120,15 @@ public abstract class CalculatorUtils {
         String newExpress = express.replaceAll(CommonConstants.EMPTY_REGIX, CommonConstants.EMPTY_STR);
         //分隔表达式，重新组装
         String[] split = newExpress.split(CommonConstants.EMPTY_STR);
-        String numStr = CommonConstants.EMPTY_STR;
+        StringBuilder numStr = new StringBuilder(CommonConstants.EMPTY_STR);
         for (int i = 0; i < split.length; i++) {
             String str = split[i];
             if(str.matches(CommonConstants.NUMBER_REGIX)) {
                 //是数值，需要判断下一个是否依旧是数值
-                numStr += str;
+                numStr.append(str);
                 if(!split[i+1].matches(CommonConstants.NUMBER_REGIX)) {
-                    expressList.add(numStr);
-                    numStr = CommonConstants.EMPTY_STR;
+                    expressList.add(numStr.toString());
+                    numStr = new StringBuilder(CommonConstants.EMPTY_STR);
                 }
             } else {
                 //运算符直接放list即可
@@ -237,7 +252,6 @@ public abstract class CalculatorUtils {
             String pop = numStack.pop();
             expressList.add(pop);
         }
-        List<String> reverse = CollectionUtil.reverse(expressList);
-        return reverse;
+        return CollectionUtil.reverse(expressList);
     }
 }
