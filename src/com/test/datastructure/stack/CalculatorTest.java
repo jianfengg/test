@@ -83,11 +83,8 @@ public class CalculatorTest {
             }
         }
 
-        while(true) {
+        while (!operStack.isEmpty()) {
             //如果符号栈为空，则计算到最后的结果, 数栈中只有一个数字【结果】
-            if(operStack.isEmpty()) {
-                break;
-            }
             int num1 = numStack.pop();
             int num2 = numStack.pop();
             int oper = operStack.pop();
