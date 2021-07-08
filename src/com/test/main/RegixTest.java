@@ -5,9 +5,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.aliyun.openservices.shade.org.apache.commons.lang3.StringEscapeUtils;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Date;
 
 /**
  * @Description:
@@ -23,15 +21,25 @@ import java.util.regex.Pattern;
 public class RegixTest {
 
     public static void main(String[] args) {
+//
+//        String re = "(.+[+\\-*/]).+|.+(\\d+).+";
+//        String express = "1+2+45*32+9";
+//        System.out.println(express.matches(re));
+//        Pattern compile = Pattern.compile(re);
+//        Matcher m = compile.matcher(express);
+//        System.out.println(m.matches());
+//        String group = m.group();
+//        System.out.println(group);
 
-        String re = "(.+[+\\-*/]).+|.+(\\d+).+";
-        String express = "1+2+45*32+9";
-        System.out.println(express.matches(re));
-        Pattern compile = Pattern.compile(re);
-        Matcher m = compile.matcher(express);
-        System.out.println(m.matches());
-        String group = m.group();
-        System.out.println(group);
+        Date ad = new Date();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Date ad1 = new Date();
+        System.out.println(ad.after(ad1));
+        System.out.println(ad.before(ad1));
     }
 
     public static void test2() {
