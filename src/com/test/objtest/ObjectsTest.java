@@ -7,6 +7,8 @@ import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class ObjectsTest {
@@ -18,7 +20,9 @@ public class ObjectsTest {
         }*/
 
 //        testBigD();
-        testD();
+//        testD();
+        Map<String, Object> map = new HashMap<>(10);
+        System.out.println(map.size());
     }
 
 
