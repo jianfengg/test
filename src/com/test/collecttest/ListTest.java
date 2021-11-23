@@ -16,6 +16,15 @@ public class ListTest {
         List<Person> collect = personList.stream().sorted(Comparator.comparing(Person::getUserCode).reversed().thenComparing(Person::getId)).collect(Collectors.toList());
 
         System.out.println(collect);
+
+        List<Person> people = personList.subList(0, 2);
+
+
+        System.err.println(people.size());
+        System.err.println(people);
+
+        List<Person> people1 = personList.subList(2, 4);
+        System.err.println(people1);
         /*Map<String, Set<String>> listMap = personList.stream().collect(Collectors.groupingBy(Person::getSex, Collectors.mapping(Person :: getUserCode, Collectors.toSet())));
         System.err.println(collect);
 

@@ -19,6 +19,19 @@ public class Main implements Cloneable{
     private Object obj = new Object();
 
     public static void main(String[] args) throws CloneNotSupportedException {
+        int size1 = 1 / 50;
+        int size2 = 49 / 50;
+        int size3 = 51 / 50;
+        int size4 = 100 / 50;
+        int size5 = 101 / 50;
+
+        System.err.println(size1);
+        System.err.println(size2);
+        System.err.println(size3);
+        System.err.println(size4);
+        System.err.println(size5);
+
+        /*printFee();
         Main main = new Main();
 
         Main clone = (Main) main.clone();
@@ -27,7 +40,7 @@ public class Main implements Cloneable{
 
         System.out.println(
                 main.obj == clone.obj
-        );
+        );*/
 //        A a = new A("hello");
 //        B b = new B("1");
 //        a.setB(b);
@@ -115,5 +128,22 @@ public class Main implements Cloneable{
         public void setId(String id) {
             this.id = id;
         }
+    }
+
+    /**
+     * 消费
+     */
+    public static void printFee() {
+        // car
+        int a = 4000;
+        // home
+        int b = 2000;
+        // eat
+        int c = 2000;
+        // run + phone
+        int d = 1000;
+        // other
+        int e = 1000;
+        System.out.println(a + b + c + d + e);
     }
 }
