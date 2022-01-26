@@ -26,10 +26,10 @@ public class DateTest {
 
         Calendar currentDate = new GregorianCalendar();
         currentDate.setTime(date);
-        currentDate.set(11, 0);
-        currentDate.set(12, 0);
-        currentDate.set(13, 0);
-        currentDate.set(14, 0);
+        currentDate.set(Calendar.HOUR_OF_DAY, 0);
+        currentDate.set(Calendar.MINUTE, 0);
+        currentDate.set(Calendar.SECOND, 0);
+        currentDate.set(Calendar.MILLISECOND, 0);
         return currentDate.getTime();
     }
 
