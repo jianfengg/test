@@ -47,7 +47,7 @@ public class Common {
             System.out.printf("method：%s \n", "insetSort");
             InsertSort.insetSort(arr);
         } else if (m ==4) {
-            System.out.printf("method：%s \n", "insetSort");
+            System.out.printf("method：%s \n", "shellSort");
             ShellSort.shellSort(arr);
         } else {
             System.out.println("输入正确的排序方法! \n");
