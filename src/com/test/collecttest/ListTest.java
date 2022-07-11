@@ -10,7 +10,17 @@ import java.util.stream.Collectors;
 public class ListTest {
 
     public static void main(String[] args) {
-        List<Person> personList = testStream();
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7,8,7,7);
+
+        int s = list.size()/3;
+        System.out.println(s);
+
+        List<List<Integer>> test = averageAssign(list, s);
+        for (List<Integer> integers : test) {
+            System.out.println(integers.toString());
+        }
+
+        /*List<Person> personList = testStream();
         System.err.println(personList);
 
         List<Person> collect = personList.stream().sorted(Comparator.comparing(Person::getUserCode).reversed().thenComparing(Person::getId)).collect(Collectors.toList());
@@ -24,7 +34,9 @@ public class ListTest {
         System.err.println(people);
 
         List<Person> people1 = personList.subList(2, 4);
-        System.err.println(people1);
+        System.err.println(people1);*/
+
+
         /*Map<String, Set<String>> listMap = personList.stream().collect(Collectors.groupingBy(Person::getSex, Collectors.mapping(Person :: getUserCode, Collectors.toSet())));
         System.err.println(collect);
 
@@ -76,5 +88,27 @@ public class ListTest {
         System.out.println(personList.toString());
 
         return personList;
+    }
+
+    public static <T> List<List<T>> averageAssign(List<T> source, int n) {
+        List<List<T>> result = new ArrayList<>();
+        //(先计算出余数)
+        int remainder = source.size() % n;
+        //然后是商
+        int number = source.size() / n;
+        //偏移量
+        int offset = 0;
+        for (int i = 0; i < n; i++) {
+            List<T> value;
+            if (remainder > 0) {
+                value = source.subList(i * number + offset, (i + 1) * number + offset + 1);
+                remainder--;
+                offset++;
+            } else {
+                value = source.subList(i * number + offset, (i + 1) * number + offset);
+            }
+            result.add(value);
+        }
+        return result;
     }
 }

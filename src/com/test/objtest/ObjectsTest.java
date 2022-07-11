@@ -1,6 +1,6 @@
 package com.test.objtest;
 
-import com.test.common.utils.DateUtils;
+import com.test.common.utils.DateUtil;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -68,7 +68,7 @@ public class ObjectsTest {
             e.printStackTrace();
             return;
         }
-        BigDecimal days = new BigDecimal(DateUtils.subDate(endtime, inStockTime));
+        BigDecimal days = new BigDecimal(DateUtil.subDate(endtime, inStockTime));
         if (0 <= days.intValue() && days.intValue() < 1) {
             days = BigDecimal.ONE;
         }
