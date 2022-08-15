@@ -13,6 +13,11 @@ public class Main {
 //        testStringFormat();
 //        testDecimal();
 //        testSplit();
+
+        String format = String.format("【优加小巴】尊敬的乘客您好，因未提前到达上车点等候，您原定于在%s月%s日%s分从%s到%s的行程已被司机取消，如有疑问请联系客服。",
+                5, 4, "12:00", 32, 32);
+
+        System.out.println(format);
     }
 
     public static void testDecimal() {

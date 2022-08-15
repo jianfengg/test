@@ -12,6 +12,7 @@ public class Common {
 
     /**
      * 初始化数组
+     *
      * @param size
      * @return
      */
@@ -28,7 +29,8 @@ public class Common {
 
     /**
      * 运行哪种排序
-     * @param m 测试第一种排序
+     *
+     * @param m   测试第一种排序
      * @param arr 初始数组
      */
     public static void testMethod(int m, int[] arr, boolean print) {
@@ -40,15 +42,18 @@ public class Common {
         if (m == 1) {
             System.out.printf("method：%s \n", "bubbleSort");
             BubbleSort.bubbleSort(arr);
-        } else if (m == 2){
+        } else if (m == 2) {
             System.out.printf("method：%s \n", "selectSort");
             SelectSort.selectSort(arr);
-        } else if (m ==3) {
+        } else if (m == 3) {
             System.out.printf("method：%s \n", "insetSort");
             InsertSort.insetSort(arr);
-        } else if (m ==4) {
+        } else if (m == 4) {
             System.out.printf("method：%s \n", "shellSort");
             ShellSort.shellSort(arr);
+        } else if (m == 5) {
+            System.out.printf("method：%s \n", "shellSort");
+            QuickSort.quickSort(arr, 0, 1);
         } else {
             System.out.println("输入正确的排序方法! \n");
         }
