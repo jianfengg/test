@@ -1,6 +1,9 @@
 package com.test.main;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author gjf
@@ -18,6 +21,16 @@ public class Main {
                 5, 4, "12:00", 32, 32);
 
         System.out.println(format);
+
+        List<String> list = new ArrayList();
+        list.add("123abccd");
+        list.add("abcdc123");
+        list.add("1234abc");
+        list.add("ab1234cd");
+        list.add("ab1234cd");
+        list = list.stream().distinct().collect(Collectors.toList());
+
+        System.out.println(list);
     }
 
     public static void testDecimal() {

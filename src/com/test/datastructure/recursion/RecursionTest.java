@@ -17,6 +17,8 @@ public class RecursionTest {
 
     public static void main(String[] args) {
         test(5);
+
+        System.out.println(Math.max(1,6));
     }
 
     public static void test(int n) {
